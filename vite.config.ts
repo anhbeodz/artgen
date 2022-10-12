@@ -15,8 +15,4 @@ export default defineConfig({
       imports: ['vue', '@vueuse/head', VueRouterAutoImports],
     }),
   ],
-  server: {
-    hmr: false,
-    open: true,
-  },
 })
