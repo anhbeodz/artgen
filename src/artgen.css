@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'artgen';
-  src:  url('../fonts/artgen.eot?lrx9cf');
-  src:  url('../fonts/artgen.eot?lrx9cf#iefix') format('embedded-opentype'),
-    url('../fonts/artgen.ttf?lrx9cf') format('truetype'),
-    url('../fonts/artgen.woff?lrx9cf') format('woff'),
-    url('../fonts/artgen.svg?lrx9cf#artgen') format('svg');
+  src:  url('../fonts/artgen.eot?4ad6t5');
+  src:  url('../fonts/artgen.eot?4ad6t5#iefix') format('embedded-opentype'),
+    url('../fonts/artgen.ttf?4ad6t5') format('truetype'),
+    url('../fonts/artgen.woff?4ad6t5') format('woff'),
+    url('../fonts/artgen.svg?4ad6t5#artgen') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -31,6 +31,9 @@
 .artgen-sun:before {
   content: "\e901";
 }
+.artgen-subtract:before {
+  content: "\e90e";
+}
 .artgen-close_ring:before {
   content: "\e90f";
 }
@@ -43,15 +46,18 @@
 .artgen-menu-close:before {
   content: "\e92b";
 }
+.artgen-wallet:before {
+  content: "\e92c";
+}
 .artgen-thumb:before {
   content: "\e92d";
 }
 .artgen-upload:before {
-  content: "\e902";
+  content: "\e946";
 }
 .artgen-reload:before {
-  content: "\e903";
+  content: "\e947";
 }
 .artgen-drap:before {
-  content: "\e904";
+  content: "\e948";
 }

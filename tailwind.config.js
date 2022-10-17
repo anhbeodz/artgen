@@ -20,19 +20,19 @@ module.exports = {
         'highlight': '#F613FF',
         'backgroundGray': '#E6EAF5',
         'backgroundBox': '#FFFFFF',
-        'backgroundOverlay': 'rgba(230,234,245,0.8)',
+        'backgroundOverlay': 'rgba(230,234,245,0.8)', // E6EAF5
         'backgroundOpacity8': 'rgba(229,231,235,0.8)',
         'backgroundOpacityGray8': 'rgba(233,236,247,0.8)',
         'heading': '#060E27',
-        'subText': '#5E717E',
-        'text': '#636180',
+        'subText': '#636180',
+        'text': '#060E27',
         'border': '#E6EAF5',
         'borderTable': '#E0E4EF',
         // Dark version
         'backgroundDark': '#212452',
         'backgroundBoxDark': 'rgba(55,65,81,0.8)', 
         'backgroundButtonDark': '#132352',
-        'backgroundOverlayDark': 'rgb(34,48,92,0.8)',
+        'backgroundOverlayDark': 'rgb(34,48,92,0.8)', // #22305C
         'headingDark': '#FFFFFF',
         'borderDark': '#36306D',
         'borderTableDark': '#7C748E',

@@ -22,7 +22,8 @@
     @apply p-[6px_16px];
     @apply font-medium;
     @apply transition-all;
-    @apply focus:outline-none
+    @apply focus:outline-none;
+    @apply text-white
   }
 
   .text-larger {
@@ -97,7 +98,8 @@
     @apply bg-backgroundOverlay;
     @apply p-[12px_20px];
     @apply w-full;
-    @apply outline-none
+    @apply outline-none;
+    @apply text-subText
   }
 
   textarea:focus-visible,
@@ -156,6 +158,13 @@
     @apply font-bold;
     @apply text-[18px];
   }
+
+  @media (max-width: 1023px) {
+    .container {
+      max-width: 100%;
+    }
+  }
+
   @media (min-width: 768px) {
     .btn-larger {
       @apply text-[20px];
@@ -349,6 +358,11 @@
 
   }
 
+  .relative:hover .rejected-message {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .rejected-message {
     opacity: 0;
     visibility: hidden;
@@ -356,12 +370,13 @@
     bottom: calc(100% + 25px);
     border-radius: 8px;
     background: rgba(0,0,0,0.8);
-    padding: 12px;
+    padding: 5px 12px;
     color: #fff;
-    width: 210px;
+    width: 250px;
+    font-weight: 400;
     text-align: center;
     line-height: 24px;
-    font-size: 16px;
+    font-size: 14px;
     left: 50%;
     transition: all 0.3s ease-in-out;
     transform: translateX(-50%);
@@ -378,6 +393,18 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .top-hover .rejected-message {
+    bottom: auto;
+    top: 45px
+  }
+
+  .top-hover .rejected-message::before {
+    border-width: 0 7.5px 10px 7.5px;
+    border-color: transparent transparent rgba(0,0,0,0.8) transparent;
+    top: auto;
+    bottom: 100%;
   }
 
   .bg-gradients:after {
