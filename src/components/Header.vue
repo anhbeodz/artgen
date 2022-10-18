@@ -17,27 +17,33 @@
       <div class="hidden lg:block" id="mobile-menu">
         <ul class="flex lg:flex-row flex-col font-heading items-center">
           <li>
-            <a
-              href="/"
+            <router-link
+              tag="a"
               class="text-white px-[24px] hover:link-gradient"
-              aria-current="page"
-              >Create</a
+              to="/"
+              >Create</router-link
             >
           </li>
           <li>
-            <a href="/list" class="text-white px-[24px] hover:link-gradient">
-              List</a
+            <router-link
+              tag="a"
+              class="text-white px-[24px] hover:link-gradient"
+              to="/list"
+              >List</router-link
             >
           </li>
           <li>
-            <a href="/login" class="text-white px-[24px] hover:link-gradient"
-              >Login</a
+            <router-link
+              tag="a"
+              class="text-white px-[24px] hover:link-gradient"
+              to="/login"
+              >Login</router-link
             >
           </li>
         </ul>
       </div>
       <div
-        class="text-white px-[24px] hover:link-gradient border-l-[1px] border-[#443D81] cursor-pointer text-[20px] toggle-darktheme"
+        class="text-white pl-[24px] hover:link-gradient border-l-[1px] border-[#443D81] cursor-pointer text-[20px] toggle-darktheme"
       >
         <label for="toggle-darktheme">
           <input

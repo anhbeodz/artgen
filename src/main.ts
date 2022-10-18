@@ -2,18 +2,16 @@ import { createApp } from 'vue'
 import './tailwind.css'
 import './artgen.css'
 import App from './App.vue'
-import { createRouter, createWebHistory } from 'vue-router/auto'
 import { createHead } from '@vueuse/head'
 import store from "./store";
+import router from "./router/index";
 
 
-const app = createApp(App)
+const app = createApp({
+  render: () => h(App),
+}); 
+
 const head = createHead()
-
-const router = createRouter({
-  history: createWebHistory(),
-})
-
 app.use(router)
 app.use(head)
 app.use(store)

@@ -1,14 +1,14 @@
 <route lang="json">
 {
   "meta": {
-    "title": "List"
+    "title": "Artwork List"
   }
 }
 </route>
 
 <script setup>
 useHead({
-  title: "List",
+  title: "Artwork List",
 });
 </script>
 

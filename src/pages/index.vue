@@ -98,7 +98,7 @@ useHead({
         </template>
       </draggable>
     </div>
-    <p class="text-larger dark:text-white">Artwork info</p>
+    <p class="text-larger dark:text-white">Artwork Info</p>
     <div
       class="border-[1px] border-border dark:border-borderDark rounded-[8px] dark:text-white p-[20px] mb-[24px]"
       v-if="display"
