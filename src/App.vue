@@ -8,10 +8,10 @@ setInterval(() => {
 
 <template>
   <div
-    class="min-h-screen bg-white bg-main dark:bg-mainDark dark:bg-backgroundDark bg-repeat-y bg-cover"
+    class="bg-white bg-main dark:bg-mainDark dark:bg-backgroundDark bg-repeat-y bg-cover"
   >
     <Header />
-    <main class="py-[15px]">
+    <main class="py-[15px] min-h-screen">
       <router-view />
     </main>
   </div>

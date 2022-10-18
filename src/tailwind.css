@@ -358,7 +358,7 @@
 
   }
 
-  .relative:hover .rejected-message {
+  .relative:hover > .rejected-message {
     opacity: 1;
     visibility: visible;
   }
@@ -451,4 +451,23 @@ button[disabled]:hover {
 
 .filter {
   filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.65));
+}
+
+@media (max-width: 1024px) {
+  .mobile-menu {
+    width: 100%;
+    position: absolute;
+    height: 100vh;
+    top: calc(100% + 11px);
+    background: #000;
+    z-index: 22;
+    left: 0;
+    padding: 15px 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .active.mobile-menu {
+    opacity: 1;
+    visibility: visible;
+  }
 }

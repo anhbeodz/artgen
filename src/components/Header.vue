@@ -1,12 +1,12 @@
 <template>
-  <header class="bg-[rgba(0,0,0,1)] py-[4px]">
+  <header class="bg-[rgba(0,0,0,1)] py-[10px]">
     <div
-      class="px-[15px] lg:px-[25px] flex flex-wrap justify-end items-center mx-auto"
+      class="px-[15px] lg:px-[25px] flex flex-wrap justify-end items-center mx-auto relative"
     >
       <a href="/" class="flex items-center mr-auto">
         <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="mr-3 h-6 sm:h-10"
+          src="../assets/images/paint-palette.png"
+          class="mr-3 h-8 sm:h-10"
           alt="Art Generator"
         />
         <span
@@ -14,12 +14,12 @@
           >Art Generator</span
         >
       </a>
-      <div class="hidden lg:block" id="mobile-menu">
-        <ul class="flex lg:flex-row flex-col font-heading items-center">
+      <div :class="{ active: showMobileMenu }" class="mobile-menu">
+        <ul class="flex lg:flex-row flex-col font-heading lg:items-center">
           <li>
             <router-link
               tag="a"
-              class="text-white px-[24px] hover:link-gradient"
+              class="text-white lg:p-[0_24px] p-[15px] hover:link-gradient block border-b-[1px] border-[rgba(255,255,255,0.1)] lg:border-none"
               to="/"
               >Create</router-link
             >
@@ -27,7 +27,7 @@
           <li>
             <router-link
               tag="a"
-              class="text-white px-[24px] hover:link-gradient"
+              class="text-white lg:p-[0_24px] p-[15px] hover:link-gradient block border-b-[1px] border-[rgba(255,255,255,0.1)] lg:border-none"
               to="/list"
               >List</router-link
             >
@@ -35,7 +35,7 @@
           <li>
             <router-link
               tag="a"
-              class="text-white px-[24px] hover:link-gradient"
+              class="text-white lg:p-[0_24px] p-[15px] hover:link-gradient block"
               to="/login"
               >Login</router-link
             >
@@ -53,21 +53,26 @@
             class="absolute border-0 h-[1px] w-[1px] p-0 m-[-1px] whitespace-nowrap overflow-hidden appearance-none"
           />
           <i
-            class="artgen-moon w-[24px] text-white dark:text-white text-[22px] moon cursor-pointer hover:link-gradient"
+            class="artgen-moon w-[24px] text-white text-[22px] moon cursor-pointer hover:link-gradient"
           ></i>
           <i
-            class="artgen-sun w-[24px] text-white dark:text-white text-[23px] sun cursor-pointer hover:link-gradient"
+            class="artgen-sun w-[24px] text-white text-[23px] sun cursor-pointer hover:link-gradient"
           ></i>
         </label>
       </div>
       <button
-        data-collapse-toggle="mobile-menu"
+        @click="showMobileMenu = !showMobileMenu"
         type="button"
-        class="text-white hover:link-gradient block lg:hidden text-[20px]"
-        aria-controls="mobile-menu-2"
-        aria-expanded="false"
+        class="text-white hover:link-gradient lg:hidden text-[20px] p-[0_0_0_20px] flex"
       >
-        <i class="artgen-menu-bars"></i>
+        <i
+          v-if="!showMobileMenu"
+          class="artgen-menu-bars text-white text-[22px] w-[22px] h-[22px]"
+        ></i>
+        <i
+          v-if="showMobileMenu"
+          class="artgen-menu-close text-white text-[18px] w-[22px] h-[22px]"
+        ></i>
       </button>
     </div>
   </header>

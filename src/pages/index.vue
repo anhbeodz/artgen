@@ -18,20 +18,20 @@ useHead({
     <div class="dark:text-white mb-[40px]">
       <p class="text-larger">Upload Image</p>
       <label
-        class="flex relative cursor-pointer justify-center items-center dark:bg-backgroundOverlayDark bg-backgroundOverlay rounded-[8px] p-[30px] before-border"
+        class="flex sm:flex-row flex-col relative cursor-pointer justify-center items-center dark:bg-backgroundOverlayDark bg-backgroundOverlay rounded-[8px] p-[30px] before-border"
         for="files"
       >
         <div
-          class="bg-[rgb(99,97,128,0.1)] dark:bg-[rgba(0,156,228,0.3)] rounded-[8px] w-[80px] h-[80px] flex justify-center items-center mr-[22px]"
+          class="bg-[rgb(99,97,128,0.1)] dark:bg-[rgba(0,156,228,0.3)] rounded-[8px] w-[80px] h-[80px] flex justify-center items-center sm:mr-[22px] mb-[16px] sm:mb-0"
         >
           <i
             class="artgen-thumb text-[38px] md:text-[48px] dark:text-white opacity-[0.5] dark:opacity-[1]"
           ></i>
         </div>
         <div class="flex flex-col">
-          <div class="mr-[14px] flex items-center mb-[12px]">
+          <div class="flex sm:flex-row flex-col items-center sm:mb-[12px] mb-[30px]">
             <p
-              class="text-heading dark:text-white md:text-[16px] mr-[13px] font-bold"
+              class="text-heading dark:text-white md:text-[16px] sm:mr-[13px] font-bold mb-[16px] sm:mb-0"
             >
               Drag and drop photos or
             </p>
@@ -100,11 +100,11 @@ useHead({
     </div>
     <p class="text-larger dark:text-white">Artwork Info</p>
     <div
-      class="border-[1px] border-border dark:border-borderDark rounded-[8px] dark:text-white p-[20px] mb-[24px]"
+      class="border-[1px] border-border dark:border-borderDark rounded-[8px] dark:text-white md:p-[20px] p-[20px_15px] mb-[24px]"
       v-if="display"
     >
       <div class="">
-        <div class="text-left">
+        <div class="">
           <label for="countries_multiple" class="block mb-[8px]"
             >Select a branch</label
           >
@@ -123,23 +123,23 @@ useHead({
             <button
               @click="createBranch"
               v-if="!isCreateDisabled"
-              class="btn-gradient hover:hover-button box-gradient"
+              class="md:mb-0 mb-[10px] btn-gradient hover:hover-button box-gradient"
             >
               Create branch
             </button>
-            <button @click="createBranch" class="" v-else disabled>
+            <button @click="createBranch" class="md:mb-0 mb-[10px]" v-else disabled>
               Create branch
             </button>
             <button
               @click="saveBranch"
               v-if="!isSaveDisabled"
-              class="ml-[16px] box-gradient bg-transparent link-gradient hover:bg-hover-gradient hover:hover-link-gradient"
+              class="md:ml-[16px] md:mb-0 mb-[10px] ml-[8px] box-gradient bg-transparent link-gradient hover:bg-hover-gradient hover:hover-link-gradient"
             >
               Save
             </button>
             <button
               v-else
-              class="ml-[16px] !bg-transparent border-[1px] text-[rgba(99,97,128,0.5)]"
+              class="md:ml-[16px] md:mb-0 mb-[10px] ml-[8px] !bg-transparent border-[1px] text-[rgba(99,97,128,0.5)]"
               disabled
             >
               Save
@@ -147,14 +147,14 @@ useHead({
 
             <button
               @click="deleteBranch"
-              class="ml-[16px] bg-transparent border-[1px] border-[#FF314F] text-[#FF314F]"
+              class="md:ml-[16px] md:mb-0 mb-[10px] ml-[8px] bg-transparent border-[1px] border-[#FF314F] text-[#FF314F]"
               v-if="!isSaveDisabled"
             >
               Delete
             </button>
             <button
               @click="deleteBranch"
-              class="ml-[16px] !bg-transparent border-[1px] text-[rgba(99,97,128,0.5)]"
+              class="md:ml-[16px] md:mb-0 mb-[10px] ml-[8px] !bg-transparent border-[1px] text-[rgba(99,97,128,0.5)]"
               v-else
               disabled
             >
@@ -164,7 +164,7 @@ useHead({
 
           <!-- <input type="checkbox" v-model="allowDup" /> Allow dupplicates -->
           <div class="flex md:flex-row flex-col mb-[24px]">
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:mr-[12px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Collection ID</label>&nbsp;
               <input
                 placeholder="Collection ID"
@@ -174,7 +174,7 @@ useHead({
               />
             </div>
 
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:ml-[12px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px]">
               <label class="pb-[8px] inline-block">Name prefix</label
               >&nbsp;&nbsp;
               <input
