@@ -70,7 +70,7 @@ useHead({
         @end="drag = false"
       >
         <template #item="{ element, index }">
-          <div class="xl:flex-[0_0_12.5%] lg:flex-[0_0_16.6666%] md:flex-[0_0_33.3333%] flex-[0_0_100%] mb-[30px] pt-[14px]">
+          <div class="xl:flex-[0_0_12.5%] lg:flex-[0_0_16.6666%] md:flex-[0_0_33.3333%] flex-[0_0_50%] mb-[30px] pt-[14px]">
             <li class="cursor-move px-[8px]">
               <div class="bg-[rgb(54,191,255,0.2)] p-[4px_12px] font-bold relative">
                 <i class="artgen-drap mr-[9px]"></i>
