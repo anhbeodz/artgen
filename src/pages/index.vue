@@ -181,7 +181,6 @@ useHead({
                 class="text-text"
                 placeholder="Your collection"
                 type="text"
-                v-model="namePrefix"
               />
             </div>
           </div>
@@ -192,7 +191,6 @@ useHead({
               rows="2"
               class=""
               placeholder="Remember to replace this description"
-              v-model="description"
             ></textarea>
           </div>
           <div>
@@ -331,8 +329,6 @@ export default {
       baseUri: `https://art.getrik.com/c${this.stringHashCode(
         localStorage.getItem("username")
       )}`,
-      description: "Remember to replace this description",
-      namePrefix: "Your collection",
       isSpinner: false,
       display: false,
       isAddedListener: false,
@@ -658,8 +654,6 @@ export default {
           branches: this.branches,
           collectionName: this.collectionName,
           baseUri: this.baseUri,
-          description: this.description,
-          namePrefix: this.namePrefix,
         })
       );
       // formData.collection("branch", JSON.stringify(this.branches))

@@ -20,7 +20,7 @@ module.exports = {
         'highlight': '#F613FF',
         'backgroundGray': '#E6EAF5',
         'backgroundBox': '#FFFFFF',
-        'backgroundOverlay': 'rgba(230,234,245,0.8)', // E6EAF5
+        'backgroundOverlay': 'rgba(230,234,245,0.8)', // #E6EAF5
         'backgroundOpacity8': 'rgba(229,231,235,0.8)',
         'backgroundOpacityGray8': 'rgba(233,236,247,0.8)',
         'heading': '#060E27',
@@ -38,6 +38,8 @@ module.exports = {
         'borderTableDark': '#7C748E',
       },
       backgroundImage: {
+        'main': "url('assets/images/bg-main.jpg')",
+        'mainDark': "url('assets/images/bg_under.png')"
       },
       flex: {
         'flexMins': '0 0 calc(20% + 40px)',

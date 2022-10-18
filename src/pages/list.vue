@@ -92,7 +92,7 @@ useHead({
         <div class="w-full mt-[24px]" v-if="baseUrl != ''">
           <label class="block mb-[8px]">Link</label>
           <div
-            class="dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText"
+            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText"
           >
             <span>baseUri=</span>
             <a class="hover:text-primary" v-bind:href="baseUrl">{{
@@ -124,7 +124,9 @@ useHead({
       <div v-if="hrefDownload" class="text-center">
         <label
           class="btn btn-larger btn-gradient hover:hover-button box-gradient text-white cursor-pointer inline-block"
-          ><a :href="hrefDownload">Download Artwork</a></label
+          ><a class="relative z-10" :href="hrefDownload"
+            >Download Artwork</a
+          ></label
         >
       </div>
     </div>
