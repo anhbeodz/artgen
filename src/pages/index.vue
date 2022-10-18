@@ -175,7 +175,7 @@ useHead({
             </div>
 
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px]">
-              <label class="pb-[8px] inline-block">Name prefix</label
+              <label class="pb-[8px] inline-block">Name Prefix</label
               >&nbsp;&nbsp;
               <input
                 class="text-text"
@@ -225,7 +225,7 @@ useHead({
           class="box-gradient bg-white dark:bg-[#130E31] p-[23px] lg:w-[790px] relative rounded-[8px] shadow-[0px_8px_16px_rgba(0,0,0,0.25)] mx-[15px] text-center"
         >
           <i
-            class="artgen-close_ring cursor-pointer absolute z-[10] right-[20px] top-[20px] text-[20px] hover:link-gradient"
+            class="artgen-close_ring cursor-pointer absolute z-[10] right-[20px] top-[20px] text-[20px] hover:link-gradient text-subText"
             @click="closePopup()"
           ></i>
           <div class="text-left dark:text-white text-[20px] font-bold mb-[40px]">Notification</div>
@@ -692,6 +692,9 @@ export default {
     },
     goToList() {
       this.$router.push(`/list`);
+    },
+    goToHome() {
+      this.$router.push(`/`);
     },
   },
 };
