@@ -92,9 +92,9 @@ useHead({
         <div class="w-full mt-[24px]" v-if="baseUrl != ''">
           <label class="block mb-[8px]">Link</label>
           <div
-            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText"
+            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText whitespace-nowrap overflow-hidden text-ellipsis"
           >
-            <span>baseUri=</span>
+            <span>baseUri= </span>
             <a class="hover:text-primary" v-bind:href="baseUrl">{{
               baseUrl
             }}</a>

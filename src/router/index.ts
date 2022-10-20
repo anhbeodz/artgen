@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from '../pages/index.vue'
 import Login from '../pages/login.vue'
+import LoginWallet from '../pages/loginwallet.vue'
 import List from '../pages/list.vue'
 const routes = [
   { 
@@ -19,7 +20,10 @@ const routes = [
     path: "/list",
     component: List,
   },
-  
+  {
+    path: "/loginwallet",
+    component: LoginWallet,
+  },
 ];
 
 const router = createRouter({
