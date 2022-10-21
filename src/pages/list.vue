@@ -92,19 +92,20 @@ useHead({
         <div class="w-full mt-[24px]" v-if="baseUrl != ''">
           <label class="block mb-[8px]">Link</label>
           <div
-            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText"
+            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText flex"
           >
-            <span>baseUri= </span>
-            <a
-              class="hover:text-primary whitespace-nowrap overflow-hidden text-ellipsis inline-block align-middle"
-              v-bind:href="baseUrl"
-              >{{ baseUrl }}</a
-            >
-            <input type="hidden" id="baseUri" :value="baseUrl" />
             <div
-              v-on:click="copyBaseUri"
-              class="float-right cursor-pointer relative"
+              class="mr-auto whitespace-nowrap overflow-hidden text-ellipsis"
             >
+              <span>baseUri=</span>
+              <a
+                class="hover:text-primary align-middle"
+                v-bind:href="baseUrl"
+                >{{ baseUrl }}</a
+              >
+              <input type="hidden" id="baseUri" :value="baseUrl" />
+            </div>
+            <div v-on:click="copyBaseUri" class="cursor-pointer relative">
               <i class="artgen-duplicate text-[20px] hover:link-gradient"></i>
               <p
                 id="copied"
