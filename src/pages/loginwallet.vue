@@ -1,10 +1,8 @@
 <template>
   <div>
-    <div
-      class="container min-h-screen flex justify-center items-center mx-auto"
-    >
+    <div class="min-h-screen flex justify-center items-center">
       <div
-        class="md:w-[600px] md:mt-[-60px] mx-auto bg-white dark:bg-[#1c1930] shadow-[0px_4px_8px_rgba(0,0,0,0.08)] lg:p-[60px_80px] p-[30px_20px] rounded-[24px] text-center dark:text-white"
+        class="md:w-[600px] md:mt-[-60px] mx-auto bg-white dark:bg-[#1c1930] shadow-[0px_4px_8px_rgba(0,0,0,0.08)] lg:p-[60px_80px] p-[30px_20px] rounded-[8px] text-center dark:text-white"
       >
         <img
           src="../assets/images/paint-palette.png"

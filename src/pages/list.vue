@@ -92,12 +92,27 @@ useHead({
         <div class="w-full mt-[24px]" v-if="baseUrl != ''">
           <label class="block mb-[8px]">Link</label>
           <div
-            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText whitespace-nowrap overflow-hidden text-ellipsis"
+            class="bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[10px_24px] rounded-[4px] text-subText"
           >
             <span>baseUri= </span>
-            <a class="hover:text-primary" v-bind:href="baseUrl">{{
-              baseUrl
-            }}</a>
+            <a
+              class="hover:text-primary whitespace-nowrap overflow-hidden text-ellipsis inline-block align-middle"
+              v-bind:href="baseUrl"
+              >{{ baseUrl }}</a
+            >
+            <input type="hidden" id="baseUri" :value="baseUrl" />
+            <div
+              v-on:click="copyBaseUri"
+              class="float-right cursor-pointer relative"
+            >
+              <i class="artgen-duplicate text-[20px] hover:link-gradient"></i>
+              <p
+                id="copied"
+                class="text-[12px] absolute top-[-100%] left-[-10px] dark:text-white"
+              >
+                {{ msg }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -189,6 +204,7 @@ export default {
       baseUrl: "",
       hrefDownload: "",
       display: false,
+      msg: "",
     };
   },
   methods: {
@@ -292,13 +308,32 @@ export default {
           if (sD.length) {
             let branchData = sD[0].branchData[this.branchCID];
             console.log("ERROR-BBB:", branchData);
-
+            baseUri;
             this.editions = branchData.sort((a, b) => a - b);
             this.onEditionChange();
           }
           // this.editions = collection[0].config
         }
       }
+    },
+    copyBaseUri() {
+      let baseUri = document.querySelector("#baseUri");
+      baseUri.setAttribute("type", "text");
+      baseUri.select();
+      try {
+        let successful = document.execCommand("copy");
+        this.msg = successful ? "Copied!" : "Unsuccessful";
+        let copied = document.getElementById("copied");
+        setTimeout(function () {
+          this.copied.style.display = "none";
+        }, 3000);
+      } catch (err) {
+        alert("Oops, unable to copy");
+      }
+
+      /* unselect the range */
+      baseUri.setAttribute("type", "hidden");
+      window.getSelection().removeAllRanges();
     },
   },
 };
