@@ -179,7 +179,8 @@ useHead({
               >&nbsp;&nbsp;
               <input
                 class="text-text"
-                placeholder="Your collection"
+                :placeholder="{namePrefix}"
+                v-model="namePrefix"
                 type="text"
               />
             </div>
@@ -190,7 +191,8 @@ useHead({
               id="message"
               rows="2"
               class=""
-              placeholder="Remember to replace this description"
+              :placeholder="{description}"
+              v-model="description"
             ></textarea>
           </div>
           <div>
@@ -330,6 +332,8 @@ export default {
         localStorage.getItem("username")
       )}`,
       isSpinner: false,
+      description: "Remember to replace this description",
+      namePrefix: "Your collection",
       display: false,
       isAddedListener: false,
       show: false,
@@ -654,6 +658,8 @@ export default {
           branches: this.branches,
           collectionName: this.collectionName,
           baseUri: this.baseUri,
+          description: this.description,
+          namePrefix: this.namePrefix,
         })
       );
       // formData.collection("branch", JSON.stringify(this.branches))
