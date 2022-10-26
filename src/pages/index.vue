@@ -25,8 +25,8 @@ useHead({
           <i class="artgen-thumb text-[38px] md:text-[48px] dark:text-white opacity-[0.5] dark:opacity-[1]"></i>
         </div>
         <div class="flex flex-col">
-          <div class="flex sm:flex-row flex-col items-center sm:mb-[12px] mb-[30px]">
-            <p class="text-heading dark:text-white md:text-[16px] sm:mr-[13px] font-bold mb-[16px] sm:mb-0">
+          <div class="flex flex-col items-start sm:mb-[12px] mb-[30px]">
+            <p class="text-heading dark:text-white md:text-[16px] sm:mr-[13px] font-bold mb-[16px] sm:mb-[8px]">
               Drag and drop photos or
             </p>
             <button class="btn-gradient hover:hover-button btn-small">
@@ -39,7 +39,7 @@ useHead({
       </label>
 
       <draggable
-        class="flex mt-[1px] bg-backgroundOverlay dark:bg-backgroundOverlayDark rounded-[8px] flex-wrap px-[10px]"
+        class="flex mt-[1px] bg-backgroundOverlay dark:bg-backgroundOverlayDark rounded-[8px_8px_0_0] flex-wrap px-[10px]"
         tag="ul" v-model="objLayers" item-key="id" @start="drag = true" @end="drag = false">
         <template #item="{ element, index }">
           <div
@@ -60,7 +60,7 @@ useHead({
                   <input class="mr-auto" type="checkbox" v-model="objectDB[ci].checked" />
                   <input type="text" placeholder="0"
                     class="!w-[35px] !h-[16px] text-[12px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] !rounded-[2px] text-right !p-[5px] text-white"
-                    v-model="objectDB[ci].rarity" />
+                    v-model="objectDB[ci].rarity" /> 
                 </div>
                 </p>
               </div>
@@ -68,16 +68,15 @@ useHead({
           </div>
         </template>
       </draggable>
+      <div class="flex text-[#636180] relative z-20 top-hover mt-[1px] bg-backgroundOverlay dark:bg-backgroundOverlayDark p-[12px] rounded-[0_0_8px_8px] items-center justify-center">
+        <span class="mr-[7px]  dark:!text-white">Number of artwork:</span>
+        <input type="text" placeholder="0" @keypress="isNumber($event)"
+          class="dark:!text-white !w-[50px] !p-[5px] h-[24px] !rounded-[4px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] text-right mr-[3px]"
+          v-model="selectedBranchMin" />/
+        <span class="ml-[3px] dark:!text-white">{{ maxCurValue }}</span>
+        <p class="rejected-message">Add number of artwork you want to create before edit artwork info</p>
+      </div>
     </div>
-    <div class="flex text-[#636180] relative z-20 top-hover">
-      <span class="mr-[7px]  dark:!text-white">Number of artwork:</span>
-      <input type="text" placeholder="0" @keypress="isNumber($event)"
-        class="dark:!text-white !w-[50px] !p-[5px] h-[24px] !rounded-[4px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] text-right mr-[3px]"
-        v-model="selectedBranchMin" />/
-      <span class="ml-[3px] dark:!text-white">{{ maxCurValue }}</span>
-      <p class="rejected-message">Add number of artwork you want to create before edit artwork info</p>
-    </div>
-    <br>
     <p class="text-larger dark:text-white">Artwork Info</p>
     <div
       class="border-[1px] border-border dark:border-borderDark rounded-[8px] dark:text-white md:p-[20px] p-[20px_15px] mb-[24px]"
@@ -129,7 +128,7 @@ useHead({
                 <option value="sol">Solana</option>
               </select>
             </div>
-            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Creator address <span class="text-[#ff0000]">*</span></label>
               <input class="dark:!text-white" placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw"
                 v-model="sol_address" />
@@ -142,7 +141,7 @@ useHead({
               <input placeholder="YC" v-model="sol_symbol" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
             </div>
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Royalties Percentage <span class="text-[#ff0000]">*</span></label>
               <input class="dark:!text-white" @keypress="isNumber($event)" placeholder="10%" v-model="sol_perc" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
