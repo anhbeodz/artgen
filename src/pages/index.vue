@@ -70,11 +70,11 @@ useHead({
       </draggable>
     </div>
     <div class="flex text-[#636180] relative z-20 top-hover">
-      <span class="mr-[7px]">Number of artwork:</span>
+      <span class="mr-[7px]  dark:!text-white">Number of artwork:</span>
       <input type="text" placeholder="0" @keypress="isNumber($event)"
-        class="!w-[50px] !p-[5px] h-[24px] !rounded-[4px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] text-right mr-[3px]"
+        class="dark:!text-white !w-[50px] !p-[5px] h-[24px] !rounded-[4px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] text-right mr-[3px]"
         v-model="selectedBranchMin" />/
-      <span class="ml-[3px]">{{ maxCurValue }}</span>
+      <span class="ml-[3px] dark:!text-white">{{ maxCurValue }}</span>
       <p class="rejected-message">Add number of artwork you want to create before edit artwork info</p>
     </div>
     <br>
@@ -138,17 +138,16 @@ useHead({
           </div>
           <div v-if="network == 'sol'" class="flex md:flex-row flex-col mb-[24px]">
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+              <label class="pb-[8px] inline-block">Symbol <span class="text-[#ff0000]">*</span></label>
+              <input placeholder="YC" v-model="sol_symbol" />
+              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
             </div>
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Royalties Percentage <span class="text-[#ff0000]">*</span></label>
-              <input class="dark:!text-white" @keypress="isNumber($event)" placeholder="5%" v-model="sol_perc" />
+              <input class="dark:!text-white" @keypress="isNumber($event)" placeholder="10%" v-model="sol_perc" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
-            <!-- <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
-              <label class="pb-[8px] inline-block">Creator share <span class="text-[#ff0000]">*</span></label>
-              <input placeholder="10%" value="" />
-              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
-            </div> -->
+
           </div>
           <!-- <input type="checkbox" v-model="allowDup" /> Allow dupplicates -->
           <div class="flex md:flex-row flex-col mb-[24px]">
@@ -285,6 +284,7 @@ export default {
       network: "eth",
       sol_perc: "",
       sol_address: "",
+      sol_symbol: "",
     };
   },
 
@@ -439,7 +439,7 @@ export default {
       return true;
     },
     isGenerateDisabled() {
-      if (this.network == "sol" && (!this.sol_address || !this.sol_perc)) return true
+      if (this.network == "sol" && (!this.sol_address || !this.sol_perc || !this.sol_symbol)) return true
       if (this.branches.length > 0 && !this.isSpinner) return false;
       return true;
     },
@@ -624,7 +624,9 @@ export default {
           description: this.description,
           namePrefix: this.namePrefix,
           sol_address: this.sol_address,
-          sol_perc: this.sol_perc
+          sol_perc: this.sol_perc,
+          sol_symbol: this.sol_symbol
+
         })
       );
       // formData.collection("branch", JSON.stringify(this.branches))
