@@ -132,19 +132,19 @@ useHead({
               <label class="pb-[8px] inline-block">Creator address <span class="text-[#ff0000]">*</span></label>
               <input class="dark:!text-white" placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw"
                 v-model="sol_address" />
-              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
+              <p v-if="!sol_address && firtClicked" class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
           </div>
           <div v-if="network == 'sol'" class="flex md:flex-row flex-col mb-[24px]">
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Symbol <span class="text-[#ff0000]">*</span></label>
               <input placeholder="YC" v-model="sol_symbol" />
-              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
+              <p v-if="!sol_symbol && firtClicked" class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
             </div>
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Royalties Percentage <span class="text-[#ff0000]">*</span></label>
               <input class="dark:!text-white" @keypress="isNumber($event)" placeholder="10%" v-model="sol_perc" />
-              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
+              <p v-if="!sol_perc && firtClicked" class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
 
           </div>
@@ -284,6 +284,7 @@ export default {
       sol_perc: "",
       sol_address: "",
       sol_symbol: "",
+      firtClicked: false,
     };
   },
 
@@ -438,7 +439,7 @@ export default {
       return true;
     },
     isGenerateDisabled() {
-      if (this.network == "sol" && (!this.sol_address || !this.sol_perc || !this.sol_symbol)) return true
+      // if (this.network == "sol" && (!this.sol_address || !this.sol_perc || !this.sol_symbol)) return true
       if (this.branches.length > 0 && !this.isSpinner) return false;
       return true;
     },
@@ -607,6 +608,10 @@ export default {
       //   this.files.push(uploadedFiles[i]);
       // }
       // alert(this.sol_perc)
+      if (this.network == "sol" && (!this.sol_address || !this.sol_perc || !this.sol_symbol)) {
+        this.firtClicked = true;
+        return true;
+      }
       this.uploadFiles();
     },
 
