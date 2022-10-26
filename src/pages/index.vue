@@ -127,7 +127,7 @@ useHead({
                 <option value="sol">Solana</option>
               </select>
             </div>
-            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Creator address <span class="text-[#ff0000]">*</span></label>
               <input placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw" value="" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
@@ -139,7 +139,7 @@ useHead({
               <input placeholder="5%" value="" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:mb-0 mb-[24px] md:pl-[12px]">
               <label class="pb-[8px] inline-block">Creator share <span class="text-[#ff0000]">*</span></label>
               <input placeholder="10%" value="" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
