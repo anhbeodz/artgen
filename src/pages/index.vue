@@ -84,7 +84,7 @@ useHead({
         <div class="">
           <label for="countries_multiple" class="block mb-[8px]">Select a branch</label>
           <select @change="onBranchChange" v-model="branchCID" multiple id="countries_multiple"
-            class="h-[100px] mb-[15px]">
+            class="h-[100px] mb-[15px] bg-none">
             <option v-for="branch in branches" :value="branch.cid" class="p-[7px_20px]">
               {{ branch.label }}
             </option>
@@ -121,26 +121,28 @@ useHead({
 
           <div class="flex md:flex-row flex-col mb-[24px]">
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
-              <label class="pb-[8px] inline-block">Network</label>&nbsp;
-              <select v-model="network">
-                <option></option>
-                <option>Ethereum</option>
-                <option>Solana</option>
+              <label class="pb-[8px] inline-block">Network Chain</label>
+              <select id="network" v-model="network">
+                <option value="eth">Ethereum</option>
+                <option value="sol">Solana</option>
               </select>
             </div>
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
-              <label class="pb-[8px] inline-block">Creator address</label>&nbsp;
+            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+              <label class="pb-[8px] inline-block">Creator address <span class="text-[#ff0000]">*</span></label>
               <input placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw" value="" />
+              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
           </div>
-          <div class="flex md:flex-row flex-col mb-[24px]">
+          <div v-if="network == 'sol'" class="flex md:flex-row flex-col mb-[24px]">
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
-              <label class="pb-[8px] inline-block">Seller share</label>&nbsp;
+              <label class="pb-[8px] inline-block">Seller share <span class="text-[#ff0000]">*</span></label>
               <input placeholder="5%" value="" />
+              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
-              <label class="pb-[8px] inline-block">Creator share</label>&nbsp;
-              <input placeholder="10%" value="10%" />
+              <label class="pb-[8px] inline-block">Creator share <span class="text-[#ff0000]">*</span></label>
+              <input placeholder="10%" value="" />
+              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
             </div>
           </div>
           <!-- <input type="checkbox" v-model="allowDup" /> Allow dupplicates -->
@@ -152,12 +154,12 @@ useHead({
 
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px]">
               <label class="pb-[8px] inline-block">Name Prefix</label>&nbsp;&nbsp;
-              <input class="text-text" :placeholder="{namePrefix}" v-model="namePrefix" type="text" />
+              <input class="text-text" :placeholder="'Your collection'" :value="namePrefix" type="text" />
             </div>
           </div>
           <div class="mb-[24px]">
             <label class="pb-[8px] inline-block">Description</label>
-            <textarea id="message" rows="2" class="" :placeholder="{description}" v-model="description"></textarea>
+            <textarea id="message" rows="2" class="" :placeholder="'Remember to replace this description'" :value="description"></textarea>
           </div>
           <div>
             <label class="pb-[8px] inline-block">baseUri</label>
@@ -267,14 +269,14 @@ export default {
         localStorage.getItem("username")
       )}`,
       isSpinner: false,
-      description: "Remember to replace this description",
-      namePrefix: "Your collection",
+      description: "",
+      namePrefix: "",
       display: false,
       isAddedListener: false,
       show: false,
       completedGenerate: false,
       errorGenerate: false,
-      network: "",
+      network: "eth",
     };
   },
 

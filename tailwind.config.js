@@ -39,7 +39,9 @@ module.exports = {
       },
       backgroundImage: {
         'main': "url('assets/images/bg-main.jpg')",
-        'mainDark': "url('assets/images/bg_under.png')"
+        'mainDark': "url('assets/images/bg_under.png')",
+        'select': "url('assets/images/arrow-select.svg')",
+        'selectDark': "url('assets/images/arrow-select-dark.svg')",
       },
       flex: {
         'flexMins': '0 0 calc(20% + 40px)',

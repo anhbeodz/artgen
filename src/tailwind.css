@@ -87,7 +87,13 @@
     @apply appearance-none;
     @apply w-full;
     @apply bg-no-repeat;
-    @apply bg-[center_right_1rem]
+    @apply bg-[center_right_1rem];
+    @apply p-[13px_20px];
+    @apply bg-select
+  }
+
+  .dark select {
+    @apply bg-selectDark
   }
 
   input:not([type="radio"]):not([type="checkbox"]),

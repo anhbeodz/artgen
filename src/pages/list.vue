@@ -32,7 +32,7 @@ useHead({
               v-model="collectionId"
               multiple
               id="collection_id"
-              class="h-[160px] rounded-[8px]"
+              class="h-[160px] rounded-[8px] bg-none"
             >
               <option
                 class="p-[7px_20px]"
@@ -55,7 +55,7 @@ useHead({
               v-model="branchCID"
               multiple
               id="collection_id"
-              class="h-[160px] rounded-[8px]"
+              class="h-[160px] rounded-[8px] bg-none"
             >
               <option
                 v-for="branch in branches"
@@ -77,7 +77,7 @@ useHead({
               v-model="edtionCID"
               multiple
               id="edition_id"
-              class="h-[160px] rounded-[8px]"
+              class="h-[160px] rounded-[8px] bg-none"
             >
               <option
                 v-for="edition in editions"
