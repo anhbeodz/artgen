@@ -25,7 +25,7 @@ useHead({
           <i class="artgen-thumb text-[38px] md:text-[48px] dark:text-white opacity-[0.5] dark:opacity-[1]"></i>
         </div>
         <div class="flex flex-col">
-          <div class="flex flex-col items-start sm:mb-[12px] mb-[30px]">
+          <div class="flex flex-col sm:items-start sm:mb-[12px] mb-[30px]">
             <p class="text-heading dark:text-white md:text-[16px] sm:mr-[13px] font-bold mb-[16px] sm:mb-[8px]">
               Drag and drop photos or
             </p>
@@ -120,15 +120,15 @@ useHead({
             </button>
           </div>
 
-          <div class="flex md:flex-row flex-col mb-[24px]">
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+          <div class="flex md:flex-row flex-col">
+            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] mb-[24px]">
               <label class="pb-[8px] inline-block">Network Chain</label>
               <select id="network" v-model="network">
                 <option value="eth">Ethereum</option>
                 <option value="sol">Solana</option>
               </select>
             </div>
-            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] md:mb-0 mb-[24px]">
+            <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] mb-[24px]">
               <label class="pb-[8px] inline-block">Creator address <span class="text-[#ff0000]">*</span></label>
               <input class="dark:!text-white" placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw"
                 v-model="sol_address" />
@@ -141,7 +141,7 @@ useHead({
               <input placeholder="YC" v-model="sol_symbol" />
               <p v-if="!sol_symbol && firtClicked" class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
             </div>
-            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px] md:mb-0 mb-[24px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pl-[12px]">
               <label class="pb-[8px] inline-block">Royalties Percentage <span class="text-[#ff0000]">*</span></label>
               <input class="dark:!text-white" @keypress="isNumber($event)" placeholder="10%" v-model="sol_perc" />
               <p v-if="!sol_perc && firtClicked" class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
