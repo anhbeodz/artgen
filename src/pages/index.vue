@@ -33,14 +33,7 @@ useHead({
               Open folder
             </button>
           </div>
-          <div class="flex text-[#636180] relative z-20 top-hover">
-            <span class="mr-[7px]">Number of artwork:</span>
-            <input type="text" placeholder="0"
-              class="!w-[50px] !p-[5px] h-[24px] !rounded-[4px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] text-right mr-[3px]"
-              v-model="selectedBranchMin" />/
-            <span class="ml-[3px]">{{ maxCurValue }}</span>
-            <p class="rejected-message">Add number of artwork you want to create before edit artwork info</p>
-          </div>
+
         </div>
         <input class="type-file cursor-pointer" id="files" type="file" ref="files" webkitdirectory multiple />
       </label>
@@ -76,6 +69,15 @@ useHead({
         </template>
       </draggable>
     </div>
+    <div class="flex text-[#636180] relative z-20 top-hover">
+      <span class="mr-[7px]">Number of artwork:</span>
+      <input type="text" placeholder="0" @keypress="isNumber($event)"
+        class="!w-[50px] !p-[5px] h-[24px] !rounded-[4px] !bg-[rgba(54,48,109,0.1)] dark:!bg-[rgba(19,14,49,0.5)] text-right mr-[3px]"
+        v-model="selectedBranchMin" />/
+      <span class="ml-[3px]">{{ maxCurValue }}</span>
+      <p class="rejected-message">Add number of artwork you want to create before edit artwork info</p>
+    </div>
+    <br />
     <p class="text-larger dark:text-white">Artwork Info</p>
     <div
       class="border-[1px] border-border dark:border-borderDark rounded-[8px] dark:text-white md:p-[20px] p-[20px_15px] mb-[24px]"
@@ -129,21 +131,24 @@ useHead({
             </div>
             <div v-if="network == 'sol'" class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Creator address <span class="text-[#ff0000]">*</span></label>
-              <input placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw" value="" />
+              <input class="dark:!text-white" placeholder="N4f6zftYsuu4yT7icsjLwh4i6pB1zvvKbseHj2NmSQw"
+                v-model="sol_address" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
           </div>
           <div v-if="network == 'sol'" class="flex md:flex-row flex-col mb-[24px]">
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
-              <label class="pb-[8px] inline-block">Seller share <span class="text-[#ff0000]">*</span></label>
-              <input placeholder="5%" value="" />
-              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
             </div>
             <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
+              <label class="pb-[8px] inline-block">Royalties Percentage <span class="text-[#ff0000]">*</span></label>
+              <input class="dark:!text-white" @keypress="isNumber($event)" placeholder="5%" v-model="sol_perc" />
+              <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field. </p>
+            </div>
+            <!-- <div class="flex-[0_0_100%] md:flex-[0_0_50%] md:pr-[12px] md:mb-0 mb-[24px]">
               <label class="pb-[8px] inline-block">Creator share <span class="text-[#ff0000]">*</span></label>
               <input placeholder="10%" value="" />
               <p class="text-[14px] text-[#ff0000] mt-[5px]">This is require field.</p>
-            </div>
+            </div> -->
           </div>
           <!-- <input type="checkbox" v-model="allowDup" /> Allow dupplicates -->
           <div class="flex md:flex-row flex-col mb-[24px]">
@@ -159,7 +164,8 @@ useHead({
           </div>
           <div class="mb-[24px]">
             <label class="pb-[8px] inline-block">Description</label>
-            <textarea id="message" rows="2" class="" :placeholder="'Remember to replace this description'" :value="description"></textarea>
+            <textarea id="message" rows="2" class="" :placeholder="'Remember to replace this description'"
+              :value="description"></textarea>
           </div>
           <div>
             <label class="pb-[8px] inline-block">baseUri</label>
@@ -277,6 +283,8 @@ export default {
       completedGenerate: false,
       errorGenerate: false,
       network: "eth",
+      sol_perc: "",
+      sol_address: "",
     };
   },
 
@@ -431,12 +439,20 @@ export default {
       return true;
     },
     isGenerateDisabled() {
+      if (this.network == "sol" && (!this.sol_address || !this.sol_perc)) return true
       if (this.branches.length > 0 && !this.isSpinner) return false;
       return true;
     },
   },
 
   watch: {
+    sol_perc: function (val) {
+      // console.log("watch:", val);
+      // val = val.replace("%", "")
+      // let v = val.replace("%", "")
+      if (val > 99)
+        this.sol_perc = 99;
+    },
     maxCurValue: function (val) {
       if (val < this.selectedBranchMin) this.selectedBranchMin = val;
     },
@@ -480,6 +496,15 @@ export default {
   },
   // actions
   methods: {
+    isNumber: function (evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+        evt.preventDefault();;
+      } else {
+        return true;
+      }
+    },
     stringHashCode(str = "") {
       let hash = 0;
       for (let i = 0, len = str?.length; i < len; i++) {
@@ -582,6 +607,7 @@ export default {
       // for (var i = 0; i < uploadedFiles.length; i++) {
       //   this.files.push(uploadedFiles[i]);
       // }
+      // alert(this.sol_perc)
       this.uploadFiles();
     },
 
@@ -597,6 +623,8 @@ export default {
           baseUri: this.baseUri,
           description: this.description,
           namePrefix: this.namePrefix,
+          sol_address: this.sol_address,
+          sol_perc: this.sol_perc
         })
       );
       // formData.collection("branch", JSON.stringify(this.branches))
