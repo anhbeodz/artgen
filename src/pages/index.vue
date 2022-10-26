@@ -77,7 +77,7 @@ useHead({
       <span class="ml-[3px]">{{ maxCurValue }}</span>
       <p class="rejected-message">Add number of artwork you want to create before edit artwork info</p>
     </div>
-    <br />
+    <br>
     <p class="text-larger dark:text-white">Artwork Info</p>
     <div
       class="border-[1px] border-border dark:border-borderDark rounded-[8px] dark:text-white md:p-[20px] p-[20px_15px] mb-[24px]"
