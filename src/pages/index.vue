@@ -84,7 +84,7 @@ useHead({
         <div class="">
           <label for="countries_multiple" class="block mb-[8px]">Select a branch</label>
           <select @change="onBranchChange" v-model="branchCID" multiple id="countries_multiple"
-            class="h-[100px] mb-[15px] bg-none">
+            class="h-[100px] mb-[15px] !bg-none">
             <option v-for="branch in branches" :value="branch.cid" class="p-[7px_20px]">
               {{ branch.label }}
             </option>
